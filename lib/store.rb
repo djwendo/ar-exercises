@@ -1,7 +1,7 @@
 class Store < ActiveRecord::Base
   has_many :employees
   validates :name, presence: true, length: {minimum: 3}
-  validates :annual_revenue, presence: true, numericality: true
+  validates :annual_revenue, presence: true, numericality: {greater_than_or_equal_to: 0}
   validate :must_carry_mens_or_womens_apparel
 
   def must_carry_mens_or_womens_apparel
